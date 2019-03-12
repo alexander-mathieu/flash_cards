@@ -11,7 +11,7 @@ class Turn
   def correct?
     if guess == card.answer
       true
-    elsif
+    else
       false
     end
   end
