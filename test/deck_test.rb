@@ -48,6 +48,7 @@ class DeckTest < MiniTest::Test
   end
 
   def test_deck_object_knows_card_categories
+    skip
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
 
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
