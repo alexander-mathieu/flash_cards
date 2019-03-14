@@ -12,6 +12,7 @@ class Round
     @deck = deck
     @turns = []
     @correct_count = 0
+    @turns_taken = 0
   end
 
   def turns
@@ -28,11 +29,16 @@ class Round
     if new_turn.correct? == true
       @correct_count +=1
     end
+    @turns_taken += 1
     new_turn
   end
 
   def number_correct
     @correct_count
+  end
+
+  def percent_correct
+    @correct_count.fdiv(@turns_taken) * 100
   end
 end
 
