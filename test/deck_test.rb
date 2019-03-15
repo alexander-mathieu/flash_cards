@@ -44,11 +44,10 @@ class DeckTest < MiniTest::Test
 
     deck = Deck.new(cards)
 
-    assert_equal deck.cards.length, 3
+    assert_equal deck.cards.count, 3
   end
 
   def test_deck_object_knows_card_categories
-    skip
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
 
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
@@ -59,11 +58,10 @@ class DeckTest < MiniTest::Test
 
     deck = Deck.new(cards)
 
-    assert_same deck.cards_in_category(:Geography), deck.cards[0].category
+    assert_equal 1, deck.cards_in_category(:Geography).length
   end
 
-  def test_deck_object_knows__different_card_categories
-    skip
+  def test_deck_object_knows_other_card_categories
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
 
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
@@ -74,35 +72,20 @@ class DeckTest < MiniTest::Test
 
     deck = Deck.new(cards)
 
-    assert_equal deck.cards_in_category(:STEM)[1].category, deck.cards[0].category
+    assert_equal 2, deck.cards_in_category(:STEM).length
+  end
+
+  def test_deck_object_knows_even_more_card_categories
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+
+    card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
+
+    card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
+
+    cards = [card_1, card_2, card_3]
+
+    deck = Deck.new(cards)
+
+    assert_equal 0, deck.cards_in_category("Pop Culture").length
   end
 end
-
-#   def test_deck_object_can_return_number_of_geography_cards
-#     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-#
-#     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
-#
-#     card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
-#
-#     cards = [card_1, card_2, card_3]
-#
-#     deck = Deck.new(cards)
-#
-#     assert_equal deck.cards_in_category(:Geography), 1
-#   end
-#
-#   def test_deck_object_can_return_number_of_stem_cards
-#     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-#
-#     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
-#
-#     card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
-#
-#     cards = [card_1, card_2, card_3]
-#
-#     deck = Deck.new(cards)
-#
-#     assert_equal deck.cards_in_category(:STEM), 2
-#   end
-# end

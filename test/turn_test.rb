@@ -12,13 +12,6 @@ class TurnTest < Minitest::Test
     assert_instance_of Turn, turn
   end
 
-  def test_card_object_is_of_class_card
-    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    turn = Turn.new("Juneau", card)
-
-    assert_kind_of Card, card
-  end
-
   def test_card_object_is_instance_of_class_card
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     turn = Turn.new("Juneau", card)
