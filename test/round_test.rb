@@ -211,12 +211,13 @@ class RoundTest < MiniTest::Test
 
     new_turn = round.take_turn("Venus")
 
-     assert_equal 0, round.number_correct_by_category(:STEM)
+    new_turn = round.take_turn("North north west")
+
+     assert_equal 1, round.number_correct_by_category(:STEM)
      assert_equal 1, round.number_correct_by_category(:Geography)
   end
 
   def test_round_shows_percentage_correct_by_category
-    skip
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
 
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
@@ -229,11 +230,11 @@ class RoundTest < MiniTest::Test
 
     new_turn = round.take_turn("Juneau")
 
-    new_turn = round.take_turn("Mars")
+    new_turn = round.take_turn("Venus")
 
-    #round.take_turn("North north west")
+    new_turn = round.take_turn("North north west")
 
-    assert_equal 100.0, round.percentage_correct_by_category(:Geography)
-    assert_equal 50.0, round.percentage_correct_by_category(:STEM)
+    assert_equal 50.0, round.percent_correct_by_category(:STEM)
+    assert_equal 100.0, round.percent_correct_by_category(:Geography)
   end
 end

@@ -8,10 +8,10 @@ class Round
               :turns
 
   def initialize(deck)
-    @deck = deck
-    @turns = []
+    @deck          = deck
+    @turns         = []
     @correct_count = 0
-    @turns_taken = 0
+    @turns_taken   = 0
   end
 
   def current_card
@@ -38,7 +38,7 @@ class Round
 
   def number_correct_by_category(card_category)
     @correct_by_category = []
-    @correct_guesses = []
+    @correct_guesses     = []
     @turns.each do |card|
       if card.correct?
         @correct_guesses << card
@@ -53,21 +53,13 @@ class Round
   end
 
 
-#   def percentage_correct_by_category(card_category)
-#     @cards_by_category = []
-#     @correct_guesses = []
-#     @turns.each do |card|
-#       if card.card.category == card_category
-#         @cards_by_category << card
-#
-#     @turns.each do |card|
-#       if card.correct?
-#         @correct_guesses << card
-#       end
-#       @correct_guesses
-#       end
-#     end
-#   end
-# end
+  def percent_correct_by_category(card_category)
+    @total_by_category = []
+    @turns.each do |card|
+      if card.card.category == card_category
+        @total_by_category << card
+      end
+    end
+    number_correct_by_category(card_category).fdiv(@total_by_category.count) * 100
+  end
 end
-# @correct_by_category.count.fdiv(@cards_by_category.count) * 100
