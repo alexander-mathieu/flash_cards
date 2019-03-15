@@ -5,7 +5,7 @@ class Deck
 
   def initialize(cards = [])
     @cards = cards
-    @categoried_cards = []
+    @cards_by_category = []
   end
 
   def count
@@ -15,10 +15,10 @@ class Deck
   def cards_in_category(card_category)
     @cards.each do |card|
       if card.category == card_category
-        @categoried_cards << card
+        @cards_by_category << card
       end
     end
-    @categoried_cards
+    @cards_by_category
   end
 end
 
