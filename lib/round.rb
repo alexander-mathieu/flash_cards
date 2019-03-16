@@ -14,19 +14,24 @@ class Round
   end
 
   def start
-    puts "Welcome to Flash Cards! You're playing with #{deck.cards.count} cards."
+    puts "----------------------------------------------------"
+    if deck.cards.count == 1
+      puts "Welcome to Flashcards! You're playing with #{deck.cards.count} card."
+    else
+    puts "Welcome to Flashcards! You're playing with #{deck.cards.count} cards."
+    end
     puts "----------------------------------------------------"
 
     i = 0
     while i < deck.cards.count
 
-    puts "This is card #{@turns.count + 1} of #{deck.cards.count}."
-    puts "Question: #{@deck.cards[i].question}"
+    puts "This is card #{turns.count + 1} of #{deck.cards.count}."
+    puts "Question: #{deck.cards[i].question}"
 
     guess = gets.chomp
     take_turn(guess)
 
-    puts "#{@turns[i].feedback}"
+    puts "#{turns[i].feedback}"
 
     i += 1
     end
