@@ -37,29 +37,29 @@ class Round
   end
 
   def number_correct_by_category(card_category)
-    @correct_by_category = []
-    @correct_guesses     = []
+    correct_by_category = []
+    correct_guesses     = []
     @turns.each do |card|
       if card.correct?
-        @correct_guesses << card
+        correct_guesses << card
       end
     end
-    @correct_guesses.each do |card|
+    correct_guesses.each do |card|
       if card.card.category == card_category
-        @correct_by_category << card
+        correct_by_category << card
       end
     end
-    @correct_by_category.count
+    correct_by_category.count
   end
 
 
   def percent_correct_by_category(card_category)
-    @total_by_category = []
+    total_by_category = []
     @turns.each do |card|
       if card.card.category == card_category
-        @total_by_category << card
+        total_by_category << card
       end
     end
-    number_correct_by_category(card_category).fdiv(@total_by_category.count) * 100
+    number_correct_by_category(card_category).fdiv(total_by_category.count) * 100
   end
 end
