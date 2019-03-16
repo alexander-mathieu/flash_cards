@@ -1,7 +1,6 @@
 require './lib/card'
 require './lib/deck'
 require './lib/round'
-require 'pry'
 
 class Round
   attr_reader :deck,
@@ -33,9 +32,14 @@ class Round
     end
 
     puts "----------------------------------------------------"
-    puts "                    GAME OVER!                      "
-    puts ""
-    puts "You had #{number_correct} guesses for a total score of #{percent_correct}%."
+    puts "            **        GAME OVER!        **          "
+    puts "----------------------------------------------------"
+
+    if number_correct == 1
+      puts "You had #{number_correct} correct guess for a total score of #{percent_correct}%."
+    else
+      puts "You had #{number_correct} correct guesses for a total score of #{percent_correct}%."
+    end
     puts "Geology: #{percent_correct_by_category(:Geography)}%"
     puts "STEM: #{percent_correct_by_category(:STEM)}%"
   end
