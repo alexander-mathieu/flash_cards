@@ -20,7 +20,7 @@ class Round
 
     i = 0
     while i < deck.cards.count
-      #binding.pry
+
     puts "This is card #{@turns.count + 1} of #{deck.cards.count}."
     puts "Question: #{@deck.cards[i].question}"
 
