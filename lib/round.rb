@@ -14,6 +14,32 @@ class Round
     @turns_taken   = 0
   end
 
+  def start
+    puts "Welcome to Flash Cards! You're playing with #{deck.cards.count} cards."
+    puts "----------------------------------------------------"
+
+    i = 0
+    while i < deck.cards.count
+      #binding.pry
+    puts "This is card #{@turns.count + 1} of #{deck.cards.count}."
+    puts "Question: #{@deck.cards[i].question}"
+
+    guess = gets.chomp
+    take_turn(guess)
+
+    puts "#{@turns[i].feedback}"
+
+    i += 1
+    end
+
+    puts "----------------------------------------------------"
+    puts "                    GAME OVER!                      "
+    puts ""
+    puts "You had #{number_correct} guesses for a total score of #{percent_correct}%."
+    puts "Geology: #{percent_correct_by_category(:Geography)}%"
+    puts "STEM: #{percent_correct_by_category(:STEM)}%"
+  end
+
   def current_card
     @deck.cards[@turns.count]
   end
@@ -37,8 +63,8 @@ class Round
   end
 
   def number_correct_by_category(card_category)
-    correct_by_category = []
     correct_guesses     = []
+    correct_by_category = []
     @turns.each do |card|
       if card.correct?
         correct_guesses << card
