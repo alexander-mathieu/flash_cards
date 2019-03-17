@@ -7,6 +7,8 @@ class CardGenerator
     @file_name = file_name
   end
 
+# reads a file line by line, and puts that information into an array
+
   def read_file
     card_content = []
     new_file = File.open(file_name)
@@ -16,6 +18,8 @@ class CardGenerator
   new_file.close
   card_content
   end
+
+# iterates through the card_content array and assigns the appropriate Card class arguments to each entry; creates a card from each element in card_content array
 
   def create_cards
     cards = []

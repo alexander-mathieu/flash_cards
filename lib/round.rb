@@ -13,6 +13,8 @@ class Round
     @turns_taken   = 0
   end
 
+# iterates through deck and asks user for guesses; returns feedback; ends game and prints results when the card count == 0
+
   def start
     puts "----------------------------------------------------"
     if deck.cards.count == 1
@@ -53,6 +55,8 @@ class Round
     @deck.cards[@turns.count]
   end
 
+# creates a new turn; counts correct guesses; counts total guesses
+
   def take_turn(guess)
     new_turn = Turn.new(guess, current_card)
     @turns << new_turn
@@ -71,6 +75,8 @@ class Round
     @correct_count.fdiv(@turns_taken) * 100
   end
 
+# creates an array of correct guesses and iterates through that array to find correct guesses by category
+
   def number_correct_by_category(card_category)
     correct_guesses     = []
     correct_by_category = []
@@ -87,6 +93,7 @@ class Round
     correct_by_category.count
   end
 
+# creates an array of total guesses by category, and divides the number of guesses correct by category by the total guesses by category
 
   def percent_correct_by_category(card_category)
     total_by_category = []
