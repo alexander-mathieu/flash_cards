@@ -22,9 +22,6 @@ class CardGeneratorTest < MiniTest::Test
   end
 
   def test_card_generator_can_create_cards_from_array
-    assert_instance_of Card, card_generator.create_cards[0]
-    assert_instance_of Card, card_generator.create_cards[1]
-    assert_instance_of Card, card_generator.create_cards[2]
-    assert_instance_of Card, card_generator.create_cards[3]
+    assert_instance_of Card, card_generator.create_cards[0-3]
   end
 end
