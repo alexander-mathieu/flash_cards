@@ -53,6 +53,10 @@ class RoundTest < MiniTest::Test
     assert new_turn.correct?, true
   end
 
+  def test_category_method_returns_an_array_of_unique_categories
+    assert_equal 2, round.category.count
+  end
+
   def test_round_shows_number_of_correct_guesses
     new_turn = round.take_turn("Juneau")
 

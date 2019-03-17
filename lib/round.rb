@@ -1,6 +1,7 @@
 require './lib/card'
 require './lib/deck'
 require './lib/round'
+require 'pry'
 
 class Round
   attr_reader :deck,
@@ -47,8 +48,9 @@ class Round
     else
       puts "You had #{number_correct} correct guesses out of #{deck.cards.count} for a total score of #{percent_correct}%."
     end
-    puts "Geology: #{percent_correct_by_category(:Geography)}%"
-    puts "STEM: #{percent_correct_by_category(:STEM)}%"
+    categories.each do |category|
+      puts "#{category}: #{percent_correct_by_category(category)}%"
+    end
   end
 
   def current_card
@@ -65,6 +67,16 @@ class Round
     end
     @turns_taken += 1
     new_turn
+  end
+
+# creates an array of card categories within the deck and removes duplicates
+
+  def categories
+    categories = []
+    @deck.cards.map do |turn|
+      categories << turn.category
+    end
+    categories.uniq!
   end
 
   def number_correct
