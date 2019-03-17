@@ -1,5 +1,3 @@
-require 'pry'
-
 class CardGenerator
   attr_reader :file_name
 
@@ -7,14 +5,14 @@ class CardGenerator
     @file_name = file_name
   end
 
-  def read
-    generated_deck = []
-    file_name = File.open("./cards.txt", "r")
-    file_name.each_line do |line|
+  def generate_deck
+    deck = []
+    new_file = File.open(file_name)
+    new_file.each_line do |line|
       card = line.chomp.split(",")
-    generated_deck << card
+    deck << card
     end
-  file_name.close
-  generated_deck
+  new_file.close
+  deck
   end
 end
