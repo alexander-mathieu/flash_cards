@@ -14,7 +14,7 @@ class Round
     @turns_taken   = 0
   end
 
-# iterates through deck and asks user for guesses; returns feedback; ends game and prints results when the card count == 0
+  # iterates through deck and asks user for guesses; returns feedback; ends game and prints results when the card count == 0
 
   def start
     puts "----------------------------------------------------"
@@ -28,7 +28,7 @@ class Round
     i = 0
     while i < deck.cards.count
 
-    puts "This is card #{turns.count + 1} of #{deck.cards.count}."
+    puts "This is card #{i + 1} of #{deck.cards.count}."
     puts "Question: #{deck.cards[i].question}"
 
     guess = gets.chomp
@@ -40,7 +40,7 @@ class Round
     end
 
     puts "----------------------------------------------------"
-    puts "            **        GAME OVER!        **          "
+    puts "           **       GAME OVER!       **             "
     puts "----------------------------------------------------"
 
     if number_correct == 1
@@ -57,7 +57,7 @@ class Round
     @deck.cards[@turns.count]
   end
 
-# creates a new turn; counts correct guesses; counts total guesses
+  # creates a new turn; counts correct guesses; counts total guesses
 
   def take_turn(guess)
     new_turn = Turn.new(guess, current_card)
@@ -69,7 +69,7 @@ class Round
     new_turn
   end
 
-# creates an array of card categories within the deck and removes duplicates
+  # creates an array of card categories within the deck and removes duplicate categories
 
   def categories
     categories = []
@@ -87,7 +87,7 @@ class Round
     @correct_count.fdiv(@turns_taken) * 100
   end
 
-# creates an array of correct guesses and iterates through that array to find correct guesses by category
+  # creates an array of correct guesses and iterates through that array to find correct guesses by category
 
   def number_correct_by_category(card_category)
     correct_guesses     = []
@@ -105,7 +105,7 @@ class Round
     correct_by_category.count
   end
 
-# creates an array of total guesses by category, and divides the number of guesses correct by category by the total guesses by category
+  # creates an array of total guesses by category, and divides the number of guesses correct by category by the total guesses by category
 
   def percent_correct_by_category(card_category)
     total_by_category = []
