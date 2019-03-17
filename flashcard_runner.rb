@@ -2,6 +2,7 @@ require './lib/card'
 require './lib/turn'
 require './lib/deck'
 require './lib/round'
+# require './lib/card_generator'
 
 card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
 
@@ -16,3 +17,11 @@ deck = Deck.new([card_1, card_2, card_3, card_4])
 round = Round.new(deck)
 
 round.start
+
+# cards = CardGenerator.new("./cards.txt").create_cards
+#
+# deck = Deck.new(cards)
+#
+# round = Round.new(deck)
+#
+# round.start
