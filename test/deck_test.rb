@@ -33,7 +33,7 @@ class DeckTest < MiniTest::Test
     assert_equal 3, deck.cards.count
   end
 
-  def test_deck_object_knows_card_categories
+  def test_cards_in_category_method_returns_categories
     assert_equal 0, deck.cards_in_category("Pop Culture").length
     assert_equal 1, deck.cards_in_category(:Geography).length
     assert_equal 2, deck.cards_in_category(:STEM).length
