@@ -32,13 +32,13 @@ class RoundTest < MiniTest::Test
   end
 
   def test_current_card_method_shows_card_1_at_start
-    assert_same card_1, round.current_card
+    assert_equal card_1, round.current_card
   end
 
   def test_current_card_method_shows_card_2_after_one_turn
     new_turn = round.take_turn("Juneau")
 
-    assert_same card_2, round.current_card
+    assert_equal card_2, round.current_card
   end
 
   def test_take_turn_method_moves_cards_to_turns_array
@@ -56,7 +56,7 @@ class RoundTest < MiniTest::Test
   def test_new_turn_returns_true_when_true
     new_turn = round.take_turn("Juneau")
 
-    assert new_turn.correct?, true
+    assert new_turn.correct?
   end
 
   def test_category_method_returns_an_array_of_unique_categories
