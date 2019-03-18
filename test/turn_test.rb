@@ -20,30 +20,30 @@ class TurnTest < Minitest::Test
   def test_turn_guess_method_returns_guess
     turn = Turn.new("Juneau", card)
 
-    assert_equal turn.guess, "Juneau"
+    assert_equal "Juneau", turn.guess
   end
 
   def test_correct_method_returns_true_when_true
     turn = Turn.new("Juneau", card)
 
-    assert_equal turn.correct?, true
+    assert turn.correct?
   end
 
   def test_correct_method_returns_false_when_false
     turn = Turn.new("Anchorage", card)
 
-    assert_equal turn.correct?, false
+    refute turn.correct?
   end
 
   def test_feedback_method_returns_positive_feedback_when_correct
     turn = Turn.new("Juneau", card)
 
-    assert_equal turn.feedback, "Correct!"
+    assert_equal "Correct!", turn.feedback
   end
 
   def test_feedback_method_returns_negative_feedback_when_incorrect
     turn = Turn.new("Anchorage", card)
 
-    assert_equal turn.feedback, "Incorrect."
+    assert_equal "Incorrect.", turn.feedback
   end
 end
